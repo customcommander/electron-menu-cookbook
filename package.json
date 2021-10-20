@@ -1,0 +1,16 @@
+{
+  "name": "electron-menu-cookbook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "./cookbook.sh",
+    "recipe": "electron cook.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^15.2.0"
+  }
+}
