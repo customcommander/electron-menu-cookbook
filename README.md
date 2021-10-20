@@ -20,16 +20,48 @@ $ npm run reciple -- 01
 
 const {Menu} = require('electron');
 
-Menu.setApplicationMenu(
-  Menu.buildFromTemplate([
-    {role: 'appMenu'}, // <- Warning: macOS-only role
-    {label: 'Stuff', type: 'submenu', submenu: [
-      {label: 'Do this'},
-      {label: 'Do that'}]},
-    {label: 'Misc.', type: 'submenu', submenu: [
-      {label: 'Foo'},
-      {label: 'Bar'},
-      {label: 'Baz'}]}
-    ]));
+module.exports = () => {
+  Menu.setApplicationMenu(
+    Menu.buildFromTemplate([
+      {role: 'appMenu'}, // <- Warning: macOS-only role
+      {label: 'Stuff', type: 'submenu', submenu: [
+        {label: 'Do this'},
+        {label: 'Do that'}]},
+      {label: 'Misc.', type: 'submenu', submenu: [
+        {label: 'Foo'},
+        {label: 'Bar'},
+        {label: 'Baz'}]}
+      ]));
+};
+```
+
+
+## How do I know when a user clicked on a menu item?
+
+You can add a click handler on an item. The function receives the item clicked on as its first parameter.
+
+```shell
+$ npm run reciple -- 02
+```
+
+```javascript
+/*** main.js ***/
+
+const {Menu} = require('electron');
+
+const click = menuitem => {
+  console.log(`Click on ${menuitem.label}`);
+}
+
+module.exports = () => {
+  Menu.setApplicationMenu(
+    Menu.buildFromTemplate([
+      {role: 'appMenu'}, // <- Warning: macOS-only role
+      {label: 'Stuff', type: 'submenu', submenu: [
+        {label: 'Submenu 1', click}]},
+      {label: 'Misc.', type: 'submenu', submenu: [
+        {label: 'Submenu 2', click}]}
+      ]));
+};
 ```
 
