@@ -7,6 +7,7 @@ const html_page = path.join('recipes', recipe_dir, 'index.html');
 const main_process = `./recipes/${recipe_dir}/main.js`;
 
 app.whenReady().then(() => {
-  require(main_process);
-  new BrowserWindow({webPreferences: {preload: preload_script}}).loadFile(html_page);
+  const win = new BrowserWindow({webPreferences: {preload: preload_script}});
+  require(main_process)(win);
+  win.loadFile(html_page);
 });
