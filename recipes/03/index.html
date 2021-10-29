@@ -1,0 +1,21 @@
+<body>
+<pre>
+## How do I enable enable/disable menu items from the renderer?
+
+The renderer needs to communicate with the main process.
+Use the contextBridge API in a preload script to expose a basic on/off API in the renderer.
+
+AFAIK only menu items can be enabled or disabled. Menus themselves (e.g. `Menu A`) cannot be disabled.
+</pre>
+<!-- FYI inlining event handlers is not great; this is only a demo -->
+<fieldset>
+  <legend>Menu A > Item A1</legend>
+  <button onclick="MY_APP.enable('item-a1')">ON</button>
+  <button onclick="MY_APP.disable('item-a1')">OFF</button>
+</fieldset>
+<fieldset>
+  <legend>Menu B > Item B1</legend>
+  <button onclick="MY_APP.enable('item-b1')">ON</button>
+  <button onclick="MY_APP.disable('item-b1')">OFF</button>
+</fieldset>
+</body>
