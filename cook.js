@@ -8,6 +8,7 @@ const main_process = `./recipes/${recipe_dir}/main.js`;
 
 app.whenReady().then(() => {
   const win = new BrowserWindow({webPreferences: {preload: preload_script}});
+  win.webContents.openDevTools();
   require(main_process)(win);
   win.loadFile(html_page);
 });
